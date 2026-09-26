@@ -4,14 +4,14 @@
 
         <div class='mb-2'>
             <label for="email" class='label'>Email</label>
-            <input type="email"class='input w-full' id="email" name="email" placeholder="Email" />
+            <input type="email"class='input w-full' id="email" name="email" placeholder="Email"  required/>
             @error('email')
                 <span class="text-error">{{ $message }}</span>
             @enderror
         </div>
         <div class='mb-2'>
             <label for="password" class='label'>Password</label>
-            <input type="password" class='input w-full' id="password" name="password" placeholder="Password" />
+            <input type="password" class='input w-full' id="password" name="password" placeholder="Password" required/>
             @error('password')
                 <span class="text-error">{{ $message }}</span>
             @enderror
