@@ -2,11 +2,12 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ExtraDetailsController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'show'])->name('home');
-Route::get('/dashboard', [DashboardController::class, 'show'])->name('dashboard')->middleware('auth');
+Route::get('/dashboard', [DashboardController::class, 'show'])->name('dashboard')->middleware(['auth', 'check.profile']);
 
 Route::controller(AuthController::class)->group(function () {
     Route::get('/register', 'register')->name('register')->middleware('guest');
@@ -14,4 +15,9 @@ Route::controller(AuthController::class)->group(function () {
     Route::get('/login', 'login')->name('login')->middleware('guest');
     Route::post('/login', 'authenticate')->name('authenticate')->middleware('guest');
     Route::post('/logout', 'logout')->name('logout')->middleware('auth');
+});
+
+Route::controller(ExtraDetailsController::class)->prefix('details')->name('details.')->group(function(){
+   Route::get('/', 'create')->name('create')->middleware('auth');
+   Route::post('/','store')->name('store')->middleware('auth'); 
 });

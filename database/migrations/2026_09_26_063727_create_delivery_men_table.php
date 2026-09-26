@@ -15,7 +15,7 @@ return new class extends Migration
         Schema::create('delivery_men', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(User::class)->unique()->constrained()->cascadeOnDelete();
-            $table->decimal('balance');
+            $table->decimal('balance')->default(0.00);
             $table->string('nid')->unique();
             $table->enum('vehicle', ['cycle', 'bike']);
             $table->timestamps();

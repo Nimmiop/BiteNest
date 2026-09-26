@@ -9,6 +9,9 @@
             </div>
             <ul tabindex="-1" class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
                 <x-nav.link route="home">Home</x-nav.link>
+                @auth
+                    <x-nav.link route="dashboard">Dashboard</x-nav.link>
+                @endauth
                 {{-- <x-nav.link route="about">About</x-nav.link>
                 <li>
                     <a>Parent</a>
@@ -25,6 +28,9 @@
     <div class="navbar-center hidden lg:flex">
         <ul class="menu menu-horizontal px-1">
             <x-nav.link route="home">Home</x-nav.link>
+            @auth
+                <x-nav.link route="dashboard">Dashboard</x-nav.link>
+            @endauth
             {{-- <x-nav.link route="about">About</x-nav.link>
             <li>
                 <details>

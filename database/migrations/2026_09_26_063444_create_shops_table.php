@@ -15,7 +15,11 @@ return new class extends Migration
         Schema::create('shops', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(User::class)->unique()->constrained()->cascadeOnDelete();
-            $table->string('address')->nullable();
+            $table->string('name');
+            $table->string('social_link')->nullable();
+            $table->string('web_link')->nullable();
+            $table->decimal('rating', 4, 2)->default(0.00);
+            $table->string('address');
             $table->enum('type', ['grocery', 'food']);
             $table->geography('coordinates', subtype: 'point')->nullable();
             //$table->spatialIndex('coordinates');
