@@ -27,6 +27,22 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'is_active' => 'boolean',
         ];
+    }
+
+    public function customer()
+    {
+        return $this->hasOne(Customer::class);
+    }
+
+    public function deliveryMan()
+    {
+        return $this->hasOne(DeliveryMan::class);
+    }
+
+    public function shop()
+    {
+        return $this->hasOne(Shop::class);
     }
 }
